@@ -39,7 +39,7 @@ prime = (n)->
 	while n >= primes.length
 		nextPrime()
 	primes[n]
-	
+
 primal = (n)->
 	if n < 2
 		return false

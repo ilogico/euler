@@ -62,7 +62,6 @@ verify = (n)->
 		if (n[i] * 100 + n[i+1] * 10 + n[i+2]) % prime(i-1) != 0
 			return
 		i++
-	console.log +n.map((v)-> "" + v).join('')
 	result += +n.map((v)-> "" + v).join('')
 	undefined
 

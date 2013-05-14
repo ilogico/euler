@@ -7,10 +7,7 @@ biggestPrimeFactor = (n)->
 		while n % p == 0
 			n /= p
 		i++
-	if n == !
-		p
-	else
-		n
+	p
 console.log biggestPrimeFactor 600851475143
 
 
