@@ -7,8 +7,8 @@ capicua = (str)->
 
 findPalindrome = ->
 	candidate = -1
-	for i in [1..999]
-		for j in [1..999]
+	for i in [100..999]
+		for j in [100..999]
 			t = i*j
 			if t > candidate and capicua "" + t
 				candidate = t

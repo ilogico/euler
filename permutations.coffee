@@ -12,29 +12,58 @@ combinations = (n, p)->
 
 
 
-permutate = (a, f)->
-	l = a.length - 1
-	count = []
-	for v, i in a
-		count.push l - i
-	i = l
-	while i >= 0
-		# console.log 'inner', a
-		if count[i] == 0
-			if i == l
-				f(a)
+class SelectFrom
+	constructor: (@n, @p)->
+		@positions = null
+	next: ->
+		if @positions?
+			i = @p - 1
+			while i >= 0 and @positions[i] + 1 > @n - @p + i
+				i--
+			if i < 0
+				@positions = null
 			else
-				t = a[i]
-				a[i] = a[i+1]
-				a[i+1] = t
-				count[i] = l - i
-			i--
+				@positions[i]++
+				i++
+				while i < @p
+					@positions[i] = @positions[i - 1] + 1
+					i++
+				@positions
 		else
-			t = a[i]
-			a[i] = a[i+1]
-			a[i+1] = t
-			count[i]--
-			i++
-	undefined
+			@positions = [0...@p]
 
-permutate ['a','b','c', 'd'], console.log
+
+class Permutation
+	constructor: (i)->
+		@positions = (j for j in [0...i])
+	next: ->
+		last = @positions.length - 1
+		i = last
+		while i > 0 and @positions[i] <= @positions[i - 1]
+			i--
+		if i == 0
+			@constructor.call(@, @positions.length)
+			null
+		else
+			i--
+			l = last
+			val = @positions[i]
+			while @positions[l] <= val
+				l--
+			@positions[i] = @positions[l]
+			@positions[l] = val
+			i++
+			j = 0
+			end = (last - i + 1) / 2 | 0
+			while j <  end
+				idx0 = i + j
+				idx1 = last - j
+				t = @positions[idx0]
+				@positions[idx0] = @positions[idx1]
+				@positions[idx1] = t
+				j++
+			@positions
+
+module.exports =
+	SelectFrom: SelectFrom
+	Permutation: Permutation
