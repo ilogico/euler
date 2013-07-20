@@ -39,7 +39,11 @@ prime = (n)->
 	while n >= primes.length
 		nextPrime()
 	primes[n]
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> ad4a5b81b3096d51d5bc33c5c99e9a20f9409025
 primal = (n)->
 	if n < 2
 		return false

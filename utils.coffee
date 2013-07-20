@@ -18,6 +18,7 @@ sumArray = (a)->
 	s += i for i in a
 	s
 
+
 insertionsort = (a, order, start, post_end)->
 	i = start + 1
 	while i < post_end
@@ -70,3 +71,4 @@ module.exports =
 	quicksort: quicksort
 	sort: quicksort
 	shuffle: shuffle
+

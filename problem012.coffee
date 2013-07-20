@@ -1,5 +1,6 @@
 {prime, primeFactors} = require './primes'
 
+
 class Triangle
 	constructor: ->
 		@n = 1
