@@ -26,7 +26,7 @@ class EventEmitter
   on: (event, callback) ->
     @events = {} unless @events
     @events[event] = [] unless @events[event]
-    @events.push callback
+    @events[event].push callback
   off: (event, callback) ->
     if @events and listeners = @events[event]
         if callback
